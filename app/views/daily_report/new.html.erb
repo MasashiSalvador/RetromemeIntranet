@@ -1,0 +1,117 @@
+<div class="secondary-masthead">
+    <div class="container">
+      <ul class="breadcrumb">
+        <!-- <li><a href="#">Intranet</a> <span class="divider">/</span></li> -->
+        <li class="active">Daily Report</li>
+      </ul>
+    </div><!-- /.container -->
+  </div><!-- /.secondary-masthead -->
+ 
+<div class="main-area dashboard">
+<div class="container">
+<% if(params[:notice].to_s.length != 0)%>
+<div class="alert alert-success">
+        <a class="close" data-dismiss="alert" href="#">x</a>
+        <h4 class="alert-heading">Success</h4>
+        <%= params[:notice].to_s%>
+</div><!-- /.alert -->
+<%= params[:notice]%>
+<% end %>
+<% if(params[:alert].to_s.length != 0)%>
+<div class="alert alert-error">
+        <a class="close" data-dismiss="alert" href="#">x</a>
+        <h4 class="alert-heading">Error</h4>
+        <%= params[:alert].to_s%>
+</div><!-- /.alert -->
+<%= params[:notice]%>
+<% end %>
+
+<div class="row">
+        <div class="span12">        
+<%= form_for @report, {:url => { :action => 'create'} ,:class => "form-horizontal"} do |f| %>
+   <div class="slate">
+          <div class="page-header">
+            <h2>New Report</h2>
+          </div>
+  <%= field_set_tag do %>
+  <h3><i class="icon-caret-right"></i>Working Time Log</h3>
+  <div class="well">
+  	<div class "control-group">
+  		<%= f.label :workingDay,'Working Day', :class => "control-label"%>
+  		<div class="controls">
+  	      <div class="input-append date" id="dp3" data-date="2012/07/01" data-date-format="yyyy/mm/dd">
+  	      	<%= f.text_field :workingDay, {:class => "span2", :size => "16"} %>
+  	      <span class="add-on"><i class="icon-th"></i></span>
+  	      </div><!-- input-append date -->
+  		</div><!-- controls -->
+     </div> <!-- control-group -->
+     <div class="control-group">
+       <%=f.label :worktimeBegin, 'Work Time', {:class => "control-label"} %>
+     <div class="controls">
+  	   <%= f.text_field :worktimeBegin, {:class => "span1 timepicker"} %>
+  	   <span>to</span>
+  	   <%= f.text_field :worktimeEnd, {:class => "span1 timepicker"}%> 
+      </div><!-- controls -->
+    </div><!-- control-group -->
+    <div class="control-group">
+      <%= f.label :breaktime ,"Break Time", {:class => "control-label"}%>
+      <div class="controls">
+        <%= f.text_field :breaktime, {:class => "span1 hour"}%>
+      </div><!-- controls -->
+    </div>
+    </div>
+  <% end %>
+  
+  <%= field_set_tag do %>
+    <h3><i class="icon-caret-right"></i>Issue's Log</h3>
+   <%if(params[:alert].to_s.length != 0)%>
+    <div class="alert alert-warning">
+       <strong><%= params[:alert]%></strong>    
+    </div><!-- /.alert-warning -->
+   <% end %>
+    <div class="control-group">
+       <table class="table table-bordered issuelist">
+        <tr>
+          <th>#</th><th>Project Name</th><th>Category</th><th>Issue</th><th>Time</th>
+        </tr>
+         <% @tasks.each_with_index do |task,i| %>
+         <% @task = task %>
+          <tr>
+          	<td>
+          		<%= i %>
+          	</td>
+          	<td>
+          		<%= collection_select("task",:project_id,@projects,:id,:projectName,{:prompt => 'Choose...'},{:index => i,:class => "chzn-select"})%>
+          	</td>
+          	<td>
+                <%= collection_select("task",:category_id,@categories,:id,:categoryName,{:prompt => 'Choose...'},{:index => i,:class => "chzn-select"})%>
+            </td>
+            <td>
+              <%= text_field "task","issueTitle", {:id => 'inputWarning', :class => "span5", :index => i} %>
+            </td>
+            <td>
+              <%= text_field "task","spendTime", {:class => "span1 hour",:placeholder=>"01:00" ,:index => i}%>
+            </td>
+            </tr>
+         <% end %>       
+   <% end %>
+      </table> 
+    </div>
+  
+  <%= field_set_tag do %>
+    <h3><i class="icon-caret-right"></i>Comment</h3>
+    <div class="control-group">
+    <%= f.text_area :comment ,{:class => 'full', :id => 'textarea',:rows => '7'}%>
+    </div><!-- /.control-group -->
+    <div class="form-actions">
+    <%= f.submit 'Cancel', {:class =>'btn btn-large'} %>
+    <%= f.submit 'Submit', {:class =>'btn btn-primary btn-large'} %>
+    </div>
+  <% end %>
+<% end %>
+</div><!-- /.slate -->
+</form>
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div><!-- /.container -->
+  </div><!-- /.main-area -->

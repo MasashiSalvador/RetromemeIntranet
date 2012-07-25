@@ -1,0 +1,31 @@
+<div class="main-area dashboard">
+<div class="container">
+<div class="row">
+        <div class="span12">      
+          <div class="slate">
+            <div class="page-header">
+<h2>Reports <span>on <%= Time.now.strftime("%B %Y")%></span></h2>
+</div>
+<table class="table table-bordered issuelist">
+              <tr>
+                <th>Name</th><th>Year</th><th>Month</th><th>Day</th><th>Start</th><th>End</th><th>Time</th><th>Action</th>
+              </tr>
+              <% @reports.each{|report| %>
+              	<tr>
+              		<td><%= @user.username %></td>
+              		<td><%= report.workingDay.strftime('%Y')%></td>
+              		<td><%= report.workingDay.strftime('%m')%></td>
+              		<td><%= report.workingDay.strftime('%d')%></td>
+              		<td><%= report.worktimeBegin.strftime('%H:%M')%></td>
+              		<td><%= report.worktimeEnd.strftime('%H:%M')%></td>
+              		<td><%= report.totalWorkTime.strftime('%H:%M')%></td>
+              		<td class= "actions"><%= link_to("View Detail",{:action => 'showDetail' ,:r_id => report.id}, {:class => "btn btn-small btn-primary"})%></td>
+              	</tr>
+              <% }%>
+</table>
+
+</div><!-- /.slate -->
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div>
+</div>

@@ -1,0 +1,53 @@
+
+// 
+//  Retromeme Kickstarter Framework V2.0
+//  Updated: 2012.7.1
+//  
+//   Common Files
+//  -------------------------------------------------------------------------------
+//   _config.scss      : Setting valuables.
+//   _default.scss     : Importing Compass and other libraries.
+//   lib
+//     font-awesome    : Iconic Font designed for use with Twitter Bootstrap.
+//     bootstrap       : Simple Interface components by Twitter.
+// 
+//   Usage
+//  -------------------------------------------------------------------------------
+//  1. Setup Compass
+//    a. Installing Ruby : Compass runs on any computer that has ruby installed.
+//    b. Setting up the ruby environment
+//      1) $ gem update --system
+//      2) $ gem install compass
+//  2. Add RKF : Pull latest RKF to your project's directory.
+//  3. Start Coding
+//    $ compass watch [path/to/project] 
+//  If you get more information, check the below.
+//  http://compass-style.org/
+// 
+
+
+// Browser Support
+$html5 : true;
+$legacy-support-for-ie6 : true;
+$legacy-support-for-ie7 : true;
+$experimental-support-for-webkit : true;
+$experimental-support-for-mozilla : true;
+$experimental-support-for-opera : true;
+$experimental-support-for-microsoft : true;
+$experimental-support-for-khtml : false;
+$experimental-support-for-svg: true;
+
+// Path Setting
+$imgPath: "../images/";
+$commonImgPath: "../images/common/";
+$libImgPath: "../images/lib/";
+$fontPath: "../fonts/";
+
+// Typography Setting
+$fontFamily : "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+$textColor : #333;
+$linkColor : #06f;
+$linkColor_visited : #39f;
+$linkColor_hover : #00f;
+$linkColor_active : #00faaa;
+

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  workingDay: 2012-07-18 20:56:27
+  worktimeBegin: 2012-07-18 20:56:27
+  worktimeEnd: 2012-07-18 20:56:27
+  breaktime: 2012-07-18 20:56:27
+  totalWorkTime: 2012-07-18 20:56:27
+  issue: 
+  comment: MyText
+
+two:
+  user: 
+  workingDay: 2012-07-18 20:56:27
+  worktimeBegin: 2012-07-18 20:56:27
+  worktimeEnd: 2012-07-18 20:56:27
+  breaktime: 2012-07-18 20:56:27
+  totalWorkTime: 2012-07-18 20:56:27
+  issue: 
+  comment: MyText
