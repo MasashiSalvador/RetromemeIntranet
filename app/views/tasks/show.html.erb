@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @task.user %>
+</p>
+
+<p>
+  <b>Taskday:</b>
+  <%= @task.taskDay %>
+</p>
+
+<p>
+  <b>Projectname:</b>
+  <%= @task.projectName %>
+</p>
+
+<p>
+  <b>Categoryname:</b>
+  <%= @task.categoryName %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @task.project %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @task.category %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%= @task.issue %>
+</p>
+
+<p>
+  <b>Issuetitle:</b>
+  <%= @task.issueTitle %>
+</p>
+
+<p>
+  <b>Spendtime:</b>
+  <%= @task.spendTime %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

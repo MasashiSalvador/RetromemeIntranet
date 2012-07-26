@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @report.user %>
+</p>
+
+<p>
+  <b>Workingday:</b>
+  <%= @report.workingDay %>
+</p>
+
+<p>
+  <b>Worktimebegin:</b>
+  <%= @report.worktimeBegin %>
+</p>
+
+<p>
+  <b>Worktimeend:</b>
+  <%= @report.worktimeEnd %>
+</p>
+
+<p>
+  <b>Breaktime:</b>
+  <%= @report.breaktime %>
+</p>
+
+<p>
+  <b>Totalworktime:</b>
+  <%= @report.totalWorkTime %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%= @report.issue %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @report.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>

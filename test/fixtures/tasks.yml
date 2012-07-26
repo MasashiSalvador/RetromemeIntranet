@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  taskDay: 2012-07-19 12:02:39
+  projectName: MyString
+  categoryName: MyString
+  project: 
+  category: 
+  issue: 
+  issueTitle: MyString
+  spendTime: 2012-07-19 12:02:39
+
+two:
+  user: 
+  taskDay: 2012-07-19 12:02:39
+  projectName: MyString
+  categoryName: MyString
+  project: 
+  category: 
+  issue: 
+  issueTitle: MyString
+  spendTime: 2012-07-19 12:02:39

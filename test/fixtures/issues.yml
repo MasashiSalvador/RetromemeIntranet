@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  report: 
+  totalTime: 2012-07-18 18:45:46
+  user: 
+
+two:
+  report: 
+  totalTime: 2012-07-18 18:45:46
+  user: 
