@@ -1,37 +1,86 @@
+<% bDisableForm = true %>
 <div class="secondary-masthead">
     <div class="container">
       <ul class="breadcrumb">
         <!-- <li><a href="#">Intranet</a> <span class="divider">/</span></li> -->
         <li class="active">Daily Report</li>
       </ul>
-    </div><!-- /.container -->
-  </div><!-- /.secondary-masthead -->
- 
+  </div><!-- /.container -->
+</div><!-- /.secondary-masthead -->
 <div class="main-area dashboard">
   <div class="container">
-  	
-<fieldset>
-            <h3><i class="icon-caret-right"></i>Working Time Log</h3>
-            <div class="well">
+  	<div class="row">
+      <div class="span12">
+      	<%= form_tag(@report, {:class => "form-horizontal"}) %>
+      	<div class="slate"> 
+        <fieldset>
+          <h3><i class="icon-caret-right"></i>Working Time Log</h3>
+          <div class="well">
             <div class="control-group">
-              <label class="control-label" for="focusedInput">Working Day</label>
-              <%= @report.workingDay %>
-            <div class="control-group">
-              <label class="control-label" for="focusedInput">Work Time</label>
+              <%= label(@reoprt ,:workingDay,'Working Day', :class => "control-label")%>
               <div class="controls">
-                <input type="text" data-provide="typeahead" class="span1 timepicker" placeholder="13:00">
-                <span>to</span>
-                <input type="text" data-provide="typeahead" class="span1 timepicker" placeholder="21:00">
-              </div><!-- /.controls -->
-            </div><!-- /.control-group -->
+              	<div class="input-append date" id="dp3" data-date="2012/07/01" data-date-format="yyyy/mm/dd">
+                  <%= text_field(@report,:workingDay,{:value => @report.workingDay.strftime('%Y/%m/%d'),:disabled => bDisableForm, :class => 
+              	  "span2", :size => "16"} )%>
+              	  <span class="add-on"><i class="icon-th"></i></span>
+              	</div><!-- input-append date -->
+              </div><!-- controls -->
+            </div> <!-- control-group -->
             <div class="control-group">
-              <label class="control-label" for="focusedInput">Break Time</label>
+              <%=label(@report, :worktimeBegin, 'Work Time', {:class => "control-label"}) %>
               <div class="controls">
-                <input type="text" data-provide="typeahead" class="span1 hour" placeholder="01:00">
-              </div><!-- /.controls -->
-            </div><!-- /.control-group -->
-            </div>
+  	            <%= text_field(@report, :worktimeBegin, {:value=> @report.worktimeBegin.strftime('%H:%M'), :class => "span1 timepicker", :disabled => bDisableForm}) %>
+  	            <span>to</span>
+  	            <%= text_field(@report, :worktimeEnd, {:value=> @report.worktimeEnd.strftime('%H:%M'), :class => "span1 timepicker", :disabled => bDisableForm}) %> 
+              </div><!-- controls -->
+            </div><!-- control-group -->
+            <div class="control-group">
+              <%= label(@report, :breaktime ,"Break Time", {:class => "control-label"}) %>
+              <div class="controls">
+                <%= text_field(@report, :breaktime, {:value=> @report.breaktime.strftime('%H:%M'),:class => "span1 hour", :disabled => bDisableForm}) %>
+              </div><!-- controls -->
+            </div> 
+          </div><!-- well -->
           </fieldset> 
-  	
-</div>
+          <%= field_set_tag do %>
+            <h3><i class="icon-caret-right"></i>Issue's Log</h3>
+            <div class="control-group">
+            <table class="table table-bordered issuelist">
+              <tr>
+                <th>#</th><th>Project Name</th><th>Category</th><th>Issue</th><th>Time</th>
+              </tr>
+            <% @tasks.each_with_index do |task,i| %>
+              <tr>
+          	    <td>
+          		  <%= i %>
+          	    </td>
+          	    <td>
+          		  <%= collection_select("task",:project_id,@projects,:id,:projectName,{:selected => task.projectName},{:index => i,:class => "chzn-select",:disabled => bDisableForm})%>
+          	    </td>
+          	<td>
+                <%= collection_select("task",:category_id,@categories,:id,:categoryName,{:selected => task.categoryName},{:index => i,:class => "chzn-select",:disabled => bDisableForm})%>
+            </td>
+            <td>
+              <%= text_field "task","issueTitle", {:value => task.issueTitle, :id => 'inputWarning', :class => "span5", :index => i, :disabled => bDisableForm} %>
+            </td>
+            <td>
+              <%= text_field "task","spendTime", {:value => task.spendTime, :class => "span1 hour",:value => task.spendTime.strftime('%H:%M') ,:index => i, :disabled => bDisableForm} %>
+            </td>
+            </tr>
+             <% end %> 
+            </table>
+           </div>
+           <% end %>
+  	       <%= field_set_tag do %>
+             <h3><i class="icon-caret-right"></i>Comment</h3>
+             <div class="control-group">
+               <%= text_area(@report, :comment ,{:value => @report.comment, :class => 'full', :id => 'textarea',
+               	:rows => '7', :disabled => bDisableForm}) %>
+             </div><!-- /.control-group -->
+           <% end %>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

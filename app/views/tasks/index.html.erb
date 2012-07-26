@@ -24,7 +24,7 @@
     <td><%= task.categoryName %></td>
     <td><%= task.project %></td>
     <td><%= task.category %></td>
-    <td><%= task.issue %></td>
+    <td><%= Issue.find(task.issue).id %></td>
     <td><%= task.issueTitle %></td>
     <td><%= task.spendTime %></td>
     <td><%= link_to 'Show', task %></td>

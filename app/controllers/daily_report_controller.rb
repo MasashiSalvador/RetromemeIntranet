@@ -14,18 +14,12 @@ class DailyReportController < ApplicationController
     @user = User.find(1)
     logger.debug(r_id + "+++++++++++++++++++++++++")
     @report = Report.find(r_id.to_i)
-    #taskDay = @report.workingDay
-    #taskDay = strftime('%Y-%m-%d', taskDay)
-    #taskDay_b = taskDay + '00:00:00'
-    #taskDay_e = taskDay + '23:59:59'
-    
     issue_id = @report.issue_id
-    logger.debug(issue_id.to_s + "++++++++++++++++++++++++222")
-    count2 = Task.where(:issue_id => issue_id.to_i)
-    logger.debug("isdfefr" + count)
-    #@issue = Issue.find(issue_id.to_i)
-    #@tasks = Task.where(:issue_id => issue_id)
-    
+    @issue = Issue.find(issue_id)
+    @tasks = @issue.tasks
+    @projects = Project.all
+    @categories = Category.all
+    logger.debug("++++++++ " + @tasks.length.to_s + " +++++++++++")
   end
   def listing
     @current = Time.now()
@@ -189,6 +183,7 @@ class DailyReportController < ApplicationController
       end
       render :text => "in report " + totalwork_min_inReport.to_s + "</br> " + "in tasks " + totaltime_of_allTasks.to_s
     end
+    
     #assign associations then save.
     @report.issue = @issue
     @report.user = @user
