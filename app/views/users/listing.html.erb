@@ -1,0 +1,26 @@
+<div class="main-area dashboard">
+<div class="container">
+<div class="row">
+        <div class="span12">      
+          <div class="slate">
+            <div class="page-header">
+<h2>Reports <span>on <%= Time.now.strftime("%B %Y")%></span></h2>
+</div>
+<table class="table table-bordered issuelist">
+              <tr>
+                <th>Name</th><th>Company</th><th>Permission</th>
+              </tr>
+              <% @users.each{|user| %>
+              	<tr>
+              		<td><%= @user.username %></td>
+              		<td><%= @user.company %></td>
+              		<td><%= @user.permission %></td>
+              	</tr>
+              <% }%>
+</table>
+
+</div><!-- /.slate -->
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div>
+</div>

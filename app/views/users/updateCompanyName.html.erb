@@ -1,0 +1,5 @@
+<%= form_for @user ,:url => {:action => "fillCompanyName"} do |u| %>
+  <%= u.label :company %>
+  <%= u.text_field :company %></br>
+  <%= u.submit %>
+<% end %>

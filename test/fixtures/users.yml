@@ -3,11 +3,15 @@
 one:
   username: MyString
   password: MyString
-  usertype: 1
   company: MyString
+  permission: 1
+  uid: MyString
+  provider: MyString
 
 two:
   username: MyString
   password: MyString
-  usertype: 1
   company: MyString
+  permission: 1
+  uid: MyString
+  provider: MyString

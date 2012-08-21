@@ -1,0 +1,25 @@
+<div class="main-area dashboard">
+<div class="container">
+<div class="row">
+        <div class="span12">      
+          <div class="slate">
+            <div class="page-header">
+<h2>Categories</h2>
+</div>
+<table class="table table-bordered issuelist">
+              <tr>
+                <th>Category Name</th><th>Category Type</th>
+              </tr>
+              <% @categories.each{|category| %>
+              	<tr>
+              		<td><%= category.categoryName %></td>
+              		<td><%= category.categoryType %></td>
+              	</tr>
+              <% }%>
+</table>
+<%= link_to('Add Category',{:action => 'new'}) %>
+</div><!-- /.slate -->
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div>
+</div>

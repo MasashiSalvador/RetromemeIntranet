@@ -20,12 +20,20 @@
     <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :usertype %><br />
-    <%= f.number_field :usertype %>
-  </div>
-  <div class="field">
     <%= f.label :company %><br />
     <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :permission %><br />
+    <%= f.number_field :permission %>
+  </div>
+  <div class="field">
+    <%= f.label :uid %><br />
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :provider %><br />
+    <%= f.text_field :provider %>
   </div>
   <div class="actions">
     <%= f.submit %>

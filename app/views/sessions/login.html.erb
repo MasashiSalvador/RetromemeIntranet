@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Retromeme Intranet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Retromeme Inc.">
+  <link href="http://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
+  <link href="assets/stylesheets/screen.css" rel="stylesheet">
+  <!--[if IE]><link href="assets/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" /><![endif]-->
+  <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="login">
+  <div class="main-area">
+    <div class="container">
+      <div class="row">
+        <h1>Retromeme Intranet Login</h1>
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="well">
+            <div class="control-group">
+              <label class="control-label" for="focusedInput">Account</label>
+              <div class="controls">
+                <input class="input-large focused" id="focusedInput" type="text" value="" placeholder="info@retromeme.jp">
+              </div><!-- /.controls -->
+            </div><!-- /.control-group -->
+            <div class="control-group">
+              <label class="control-label" for="focusedInput">Password</label>
+              <div class="controls">
+                <input class="input-large focused" id="focusedInput" type="password" value="" placeholder="●●●●●●●">
+              </div><!-- /.controls -->
+            </div><!-- /.control-group -->
+            <div class="form-actions" style="margin-bottom: 0;">
+              <button class="btn btn-primary" style="width: 220px;" type="submit">Login</button>
+            </div>
+            </div><!-- /.well -->
+          </form>
+        <%= form_tag({:controller => 'auth', :action => 'facebook'},:class => 'form-horizontal') do%>
+        <form class="form-horizontal">
+          <fieldset>
+            <div class="well">
+           <label class="control-label" for="focusedInput">Facebook Login</label>
+            <div class="form-actions" style="margin-bottom: 0;">
+            	<%= button_tag 'Login with Facebook Account', class: 'btn btn-primary', type: 'submit' %>
+            </div>
+            </div><!-- /.well -->
+          <% end %>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div><!-- /.main-area -->
+<script src="assets/javascripts/common.js"></script>
+</body>
+</html>

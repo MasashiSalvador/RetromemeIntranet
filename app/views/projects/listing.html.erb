@@ -1,0 +1,25 @@
+<div class="main-area dashboard">
+<div class="container">
+<div class="row">
+        <div class="span12">      
+          <div class="slate">
+            <div class="page-header">
+<h2>Projects</h2>
+</div>
+<table class="table table-bordered issuelist">
+              <tr>
+                <th>Project Name</th><th>Project Type</th>
+              </tr>
+              <% @projects.each{|project| %>
+              	<tr>
+              		<td><%= project.projectName %></td>
+              		<td><%= project.projectType %></td>
+              	</tr>
+              <% }%>
+</table>
+<%= link_to('Add Project',{:action => 'new'}) %>
+</div><!-- /.slate -->
+</div><!-- /.span12 -->
+</div><!-- /.row -->
+</div>
+</div>

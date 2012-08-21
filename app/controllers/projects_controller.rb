@@ -1,28 +1,17 @@
 class ProjectsController < ApplicationController
+  layout 'tousers'
   # GET /projects
   # GET /projects.json
-  def index
+  def listing
     @projects = Project.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @projects }
-    end
   end
-
-  # GET /projects/1
-  # GET /projects/1.json
-  def show
-    @project = Project.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @project }
-    end
+  
+  def add
+    @project = Project.new
+    @categories = Category.all
+    @category = Category.new
   end
-
-  # GET /projects/new
-  # GET /projects/new.json
+  
   def new
     @project = Project.new
 
@@ -41,15 +30,13 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.save
+      logger.debug("-======-")
+      redirect_to(:action => 'listing', notice: 'Project was successfully created.') 
+      #format.json { render json: @project, status: :created, location: @project }
+    else
+      render action: "new" 
+      #format.json { render json: @project.errors, status: :unprocessable_entity }
     end
   end
 

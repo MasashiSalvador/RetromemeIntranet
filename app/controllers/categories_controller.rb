@@ -1,26 +1,10 @@
 class CategoriesController < ApplicationController
+  layout 'tousers'
   # GET /categories
   # GET /categories.json
-  def index
+  def listing 
     @categories = Category.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
   end
-
-  # GET /categories/1
-  # GET /categories/1.json
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
-  end
-
   # GET /categories/new
   # GET /categories/new.json
   def new
@@ -41,15 +25,12 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(params[:category])
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render json: @category, status: :created, location: @category }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+      redirect_to(:action => 'listing', notice: 'Category was successfully created.')
+      #format.json { render json: @category, status: :created, location: @category }
+    else
+      render action: "new" 
+      #format.json { render json: @category.errors, status: :unprocessable_entity }
     end
   end
 

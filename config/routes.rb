@@ -1,6 +1,17 @@
 RetromemeIntranet::Application.routes.draw do
-  resources :users
-
+  
+  get 'daily_report/new'
+  root :to => 'daily_report#new'
+  
+  #resources :monosets
+  #OmniAuth
+  
+  match "/auth/:provider/callback" => "sessions#callback"
+  match "/logout" => "sessions#destroy", :as => :logout  
+  match "/users/index" => "daily_report#new"
+  match "/projects/listing" => "projects#listing"
+  match "/categories/listing" => "categories#listing"
+  #resources :users
   resources :tasks
 
   resources :projects

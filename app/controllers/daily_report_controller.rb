@@ -1,4 +1,5 @@
 class DailyReportController < ApplicationController
+  layout 'tousers'
   def new
     @report = Report.new()
     @report.issue = Issue.new()
@@ -11,7 +12,8 @@ class DailyReportController < ApplicationController
   end
   def showDetail #action when detail button is pushed
     r_id = params[:r_id]
-    @user = User.find(1)
+    @user = current_user
+    #@user = User.find(1)
     @report = Reports.find(r_id.to_i)
     #taskDay = @report.workingDay
     #taskDay = strftime('%Y-%m-%d', taskDay)
@@ -28,7 +30,8 @@ class DailyReportController < ApplicationController
     @current = Time.now()
     m_start = @current.strftime('%Y-%m-00')
     m_end = @current.strftime('%Y-%m-31')
-    @user = User.find(1)
+    @user = current_user
+    #@user = User.find(1)
     @reports = Report.where(:workingDay => m_start..m_end)
     logger.debug(@reports.length)
   end
@@ -85,7 +88,8 @@ class DailyReportController < ApplicationController
       redirect_to(:action => 'new') and return
     end
     #test user
-    @user = User.find(1)
+    @user = current_user
+    #@user = User.find(1)
     # 1st, new a report
     #:breaktime, :comment, :totalWorkTime, :workingDay, :worktimeBegin, :worktimeEnd
     @report = Report.new()
