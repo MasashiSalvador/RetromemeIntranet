@@ -12,9 +12,9 @@
               </tr>
               <% @users.each{|user| %>
               	<tr>
-              		<td><%= @user.username %></td>
-              		<td><%= @user.company %></td>
-              		<td><%= @user.permission %></td>
+              		<td><%= user.username %></td>
+              		<td><%= user.company %></td>
+              		<td><%= user.permission %></td>
               	</tr>
               <% }%>
 </table>
